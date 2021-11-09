@@ -8,6 +8,8 @@ import {
 
 import './App.css';
 
+import InfoBox from './InfoBox';
+
 function App() {
   
   const [countries, setCountries] = useState([]);
@@ -58,6 +60,12 @@ function App() {
             }
           </Select>
         </FormControl>
+      </div>
+
+      <div className="app__stats">
+         <InfoBox title="Coronavirus New Cases" cases="+2000" total="10000" />
+         <InfoBox title="Coronavirus New Cases" cases="+2000" total="10000" />
+         <InfoBox title="Coronavirus New Cases" cases="+2000" total="10000" />
       </div>
 
     </div>
