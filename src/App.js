@@ -10,7 +10,9 @@ import './App.css';
 
 function App() {
   
-  const [countries, setCountry] = useState([]);
+  const [countries, setCountries] = useState([]);
+
+  const [country, setCountry] = useState('worldwide');
 
   useEffect(() => {
     // The code here will run only once
@@ -26,7 +28,7 @@ function App() {
                     code: country.countryInfo.iso3
                  })
                )
-               setCountry(countries);
+               setCountries(countries);
              });
     };
 
@@ -41,7 +43,10 @@ function App() {
         <h1>COVID-19 TRACKER</h1>
 
         <FormControl className="app__dropdown">
-          <Select variant="outlined" value="">
+          <Select variant="outlined" value={ country }>
+
+            <MenuItem value="worldwide">World Wide</MenuItem>
+
             {
               countries.map(
                 (country, idx) => <MenuItem key={ idx } value={ country.code }>{ country.name }</MenuItem>
