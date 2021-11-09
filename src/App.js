@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 
 import {
   MenuItem,
@@ -10,9 +10,29 @@ import './App.css';
 
 function App() {
   
-  const [countries, setCountry] = useState(['USA', 'UK', 'INDIA']);
+  const [countries, setCountry] = useState([]);
 
-  console.log(countries);
+  useEffect(() => {
+    // The code here will run only once
+    // when the componect is loaded
+    const getCountriesData = async () => {
+
+      await fetch('https://disease.sh/v3/covid-19/countries')
+             .then(response => response.json())
+             .then(data => {
+               const countries = data.map(
+                 country => ({
+                    name: country.country,
+                    code: country.countryInfo.iso3
+                 })
+               )
+               setCountry(countries);
+             });
+    };
+
+    getCountriesData();
+
+  }, [])
 
   return (
     <div className="app">
@@ -24,7 +44,7 @@ function App() {
           <Select variant="outlined" value="">
             {
               countries.map(
-                country => <MenuItem value={country}>{ country }</MenuItem>
+                (country, idx) => <MenuItem key={ idx } value={ country.code }>{ country.name }</MenuItem>
               )
             }
           </Select>
