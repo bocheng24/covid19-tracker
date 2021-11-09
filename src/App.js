@@ -3,12 +3,15 @@ import React, {useState, useEffect} from 'react'
 import {
   MenuItem,
   FormControl,
-  Select
+  Select,
+  Card,
+  CardContent
 } from '@material-ui/core'
 
 import './App.css';
 
 import InfoBox from './InfoBox';
+import Map from './Map'
 
 function App() {
   
@@ -44,30 +47,40 @@ function App() {
 
   return (
     <div className="app">
+      <div className="app__left">
+        <div className="app__header">
+          <h1>COVID-19 TRACKER</h1>
 
-      <div className="app__header">
-        <h1>COVID-19 TRACKER</h1>
+          <FormControl className="app__dropdown">
+            <Select variant="outlined" onChange={ onCountryChange } value={ country }>
 
-        <FormControl className="app__dropdown">
-          <Select variant="outlined" onChange={ onCountryChange } value={ country }>
+              <MenuItem value="worldwide">World Wide</MenuItem>
 
-            <MenuItem value="worldwide">World Wide</MenuItem>
+              {
+                countries.map(
+                  (country, idx) => <MenuItem key={ idx } value={ country.code }>{ country.name }</MenuItem>
+                )
+              }
+            </Select>
+          </FormControl>
+        </div>
 
-            {
-              countries.map(
-                (country, idx) => <MenuItem key={ idx } value={ country.code }>{ country.name }</MenuItem>
-              )
-            }
-          </Select>
-        </FormControl>
+        <div className="app__stats">
+          <InfoBox title="Coronavirus New Cases" cases="+2000" total="10000" />
+          <InfoBox title="Coronavirus New Cases" cases="+2000" total="10000" />
+          <InfoBox title="Coronavirus New Cases" cases="+2000" total="10000" />
+        </div>
+
+        <Map />
       </div>
 
-      <div className="app__stats">
-         <InfoBox title="Coronavirus New Cases" cases="+2000" total="10000" />
-         <InfoBox title="Coronavirus New Cases" cases="+2000" total="10000" />
-         <InfoBox title="Coronavirus New Cases" cases="+2000" total="10000" />
-      </div>
-
+      <Card className="app__right">
+        <CardContent>
+          <h3>Live Cases by Countries</h3>
+          <h3>Live Cases by Countries</h3>
+          <h3>Live Cases by Countries</h3>
+        </CardContent>
+      </Card>
     </div>
   );
 }
