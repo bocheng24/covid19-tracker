@@ -13,6 +13,7 @@ import './App.css';
 import InfoBox from './InfoBox';
 import Map from './Map'
 import Table from './Table'
+import { sortData } from './util'
 
 function App() {
   
@@ -35,8 +36,9 @@ function App() {
                     code: country.countryInfo.iso3
                  })
                )
-
-               setLiveCases(data);
+               
+               const sortedData = sortData(data);
+               setLiveCases(sortedData);
                setCountries(countries);
              });
     };
