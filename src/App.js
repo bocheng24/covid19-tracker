@@ -12,6 +12,7 @@ import './App.css';
 
 import InfoBox from './InfoBox';
 import Map from './Map'
+import Table from './Table'
 
 function App() {
   
@@ -34,6 +35,8 @@ function App() {
                     code: country.countryInfo.iso3
                  })
                )
+
+               setLiveCases(data);
                setCountries(countries);
              });
     };
@@ -106,9 +109,7 @@ function App() {
 
       <Card className="app__right">
         <CardContent>
-          <h3>Live Cases by Countries</h3>
-          <h3>Live Cases by Countries</h3>
-          <h3>Live Cases by Countries</h3>
+          <Table liveCases={ liveCases } />
         </CardContent>
       </Card>
     </div>

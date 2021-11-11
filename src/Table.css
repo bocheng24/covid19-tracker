@@ -1,0 +1,19 @@
+.table {
+    height: 450px;
+    overflow: scroll;
+    background-color: #fff;
+    padding: 10px;
+}
+
+.table h3 {
+    margin-bottom: 25px;
+}
+
+.tb-row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.tb-row:nth-child(odd) {
+    background-color: #c2c8ca;
+}
