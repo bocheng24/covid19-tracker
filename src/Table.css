@@ -12,8 +12,11 @@
 .tb-row {
     display: flex;
     justify-content: space-between;
+    margin-bottom: 1px;
+    padding: 3.5px;
 }
 
 .tb-row:nth-child(odd) {
-    background-color: #c2c8ca;
+    background-color: #e84393;
+    color: #fff;
 }
