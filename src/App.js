@@ -14,6 +14,7 @@ import InfoBox from './InfoBox';
 import Map from './Map'
 import Table from './Table'
 import { sortData } from './util'
+import LineChart from './LineChart'
 
 function App() {
   
@@ -107,11 +108,16 @@ function App() {
         </div>
 
         <Map />
+        
       </div>
 
       <Card className="app__right">
-        <CardContent>
+        <CardContent className="right__card">
+          <h3>Live Cases by Countries</h3>
           <Table liveCases={ liveCases } />
+
+          <h3>World Wide New Cases</h3>
+          <LineChart />
         </CardContent>
       </Card>
     </div>
