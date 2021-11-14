@@ -11,10 +11,11 @@ import {
 import './App.css';
 
 import InfoBox from './InfoBox';
-import Map from './Map'
 import Table from './Table'
 import { sortData } from './util'
 import LineChart from './LineChart'
+import Map from './Map'
+import 'leaflet/dist/leaflet.css'
 
 function App() {
   
@@ -22,6 +23,8 @@ function App() {
   const [country, setCountry] = useState('worldwide');
   const [countryInfo, setCountryInfo] = useState([]);
   const [liveCases, setLiveCases] = useState([]);
+  const [mapCenter, setMapCenter] = useState({lat: 34, lng: -40});
+  const [mapZoom, setMapZoom] = useState(3);
 
   useEffect(() => {
     // The code here will run only once
@@ -41,6 +44,7 @@ function App() {
                const sortedData = sortData(data);
                setLiveCases(sortedData);
                setCountries(countries);
+
              });
     };
 
@@ -64,6 +68,8 @@ function App() {
     .then(data => {
             setCountry(country_code);
             setCountryInfo(data);
+            setMapCenter([data.countryInfo.lat, data.countryInfo.long]);
+            setMapZoom(4);
           });
 
   }
@@ -107,7 +113,7 @@ function App() {
 
         </div>
 
-        <Map />
+        <Map center={ mapCenter } zoom={ mapZoom } />
         
       </div>
 
