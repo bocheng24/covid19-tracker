@@ -1,5 +1,6 @@
 import React from 'react'
 import { Circle, Popup } from 'react-leaflet'
+import numeral from 'numeral'
 
 const caseTypeColors = {
     cases: {
@@ -29,7 +30,13 @@ function MapCircle({ country, caseType }) {
                 radius={ Math.sqrt(country[caseType]) * caseTypeColors[caseType].multiplier }
             >
                 <Popup>
-                    I am a popup
+                    <div>
+                        <div>{ country.country }</div>
+                        <div>{ `Cases: ${numeral(country.cases).format('0,0')}` }</div>
+                        <div>{ `Recovered: ${numeral(country.recovered).format('0,0')}` }</div>
+                        <div>{ `Deaths: ${numeral(country.deaths).format('0,0')}` }</div>
+                        
+                    </div>
                 </Popup>
     
             </Circle>

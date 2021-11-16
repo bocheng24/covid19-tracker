@@ -12,7 +12,7 @@ function ChangeMapView({ coords }) {
 
 
 function Map({ mapCountries, caseType, center, zoom }) {
-
+    console.log(mapCountries[20]);
     return (
         <div className="map">
           <MapContainer center={ center } zoom={ zoom }>
