@@ -25,6 +25,7 @@ function App() {
   const [liveCases, setLiveCases] = useState([]);
   const [mapCenter, setMapCenter] = useState({lat: 34, lng: -40});
   const [mapZoom, setMapZoom] = useState(3);
+  const [mapCountries, setMapCountries] = useState([]);
 
   useEffect(() => {
     // The code here will run only once
@@ -44,6 +45,7 @@ function App() {
                const sortedData = sortData(data);
                setLiveCases(sortedData);
                setCountries(countries);
+               setMapCountries(data);
 
              });
     };
@@ -66,10 +68,12 @@ function App() {
     await fetch(url)
     .then(response => response.json())
     .then(data => {
+
             setCountry(country_code);
             setCountryInfo(data);
             setMapCenter([data.countryInfo.lat, data.countryInfo.long]);
             setMapZoom(4);
+
           });
 
   }
@@ -113,7 +117,7 @@ function App() {
 
         </div>
 
-        <Map center={ mapCenter } zoom={ mapZoom } />
+        <Map mapCountries={ mapCountries } caseType={ "cases" } center={ mapCenter } zoom={ mapZoom } />
         
       </div>
 

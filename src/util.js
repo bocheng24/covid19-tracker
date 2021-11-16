@@ -1,3 +1,6 @@
+import React from "react"
+import numeral from "numeral";
+
 export const sortData = data => {
     let sortedData = [...data];
 

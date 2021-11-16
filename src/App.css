@@ -4,6 +4,7 @@
 
 body {
   background-color: rgb(247, 247, 247);
+ 
 }
 
 .app {
@@ -41,5 +42,9 @@ body {
 
   .app {
     flex-direction: column;
+  }
+
+  .app__left {
+    margin-bottom: 30px;
   }
 }
