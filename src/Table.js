@@ -1,5 +1,6 @@
 import React from 'react'
 import './Table.css'
+import numeral from 'numeral';
 
 function Table(props) {
     return (
@@ -11,7 +12,7 @@ function Table(props) {
                     (liveCase, idx) => (
                         <div className="tb-row" key={idx}>
                             <div>{ liveCase.country }</div>
-                            <div>{ liveCase.cases }</div>
+                            <div>{ numeral(liveCase.cases).format("0,0") }</div>
                         </div>
                     )
                 )

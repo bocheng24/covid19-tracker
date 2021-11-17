@@ -14,3 +14,7 @@ export const sortData = data => {
 
     return sortedData;
 }
+
+export const printPrettyStats = data => {
+    return data ? `+${ numeral(data).format("0.0a") }` : '0';
+}
