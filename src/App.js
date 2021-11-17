@@ -26,6 +26,7 @@ function App() {
   const [mapCenter, setMapCenter] = useState({lat: 34, lng: -40});
   const [mapZoom, setMapZoom] = useState(3);
   const [mapCountries, setMapCountries] = useState([]);
+  const [caseType, setCaseType] = useState('cases');
 
   useEffect(() => {
     // The code here will run only once
@@ -71,7 +72,7 @@ function App() {
 
             setCountry(country_code);
             setCountryInfo(data);
-            setMapCenter([data.countryInfo.lat, data.countryInfo.long]);
+            country_code !== 'worldwide' && setMapCenter([data.countryInfo.lat, data.countryInfo.long]);
             setMapZoom(4);
 
           });
@@ -103,21 +104,30 @@ function App() {
           <InfoBox title="Coronavirus Cases" 
                    cases={ printPrettyStats(countryInfo.todayCases) } 
                    total={ `${printPrettyStats(countryInfo.active)} Total` } 
+                   onClick={ e => setCaseType('cases') }
+                   className={ 'infoBox_cases' }
+                   active={ caseType === 'cases' }
           />
 
           <InfoBox title="Recovered" 
                    cases={ printPrettyStats(countryInfo.todayRecovered) } 
                    total={ `${printPrettyStats(countryInfo.recovered)} Total` } 
+                   onClick={ e => setCaseType('recovered') }
+                   className={ 'infoBox_recovered' }
+                   active={ caseType === 'recovered' }
           />
 
           <InfoBox title="Deaths" 
                    cases={ printPrettyStats(countryInfo.todayDeaths) } 
                    total={ `${printPrettyStats(countryInfo.deaths)} Total` } 
+                   onClick={ e => setCaseType('deaths') }
+                   className={ 'infoBox_deaths' }
+                   active={ caseType === 'deaths' }
           />
 
         </div>
 
-        <Map mapCountries={ mapCountries } caseType={ "cases" } center={ mapCenter } zoom={ mapZoom } />
+        <Map mapCountries={ mapCountries } caseType={ caseType } center={ mapCenter } zoom={ mapZoom } />
         
       </div>
 

@@ -7,16 +7,16 @@ import {
     Typography
   } from '@material-ui/core'
 
-function InfoBox({ title, cases, total }) {
+function InfoBox({ title, cases, total, ...props }) {
     return (
-        <Card className="info-box">
+        <Card onClick={ props.onClick } className={ `info-box ${props.active && 'infoBox__selected' }` }>
 
             <CardContent>
                 <Typography color="textSecondary">
                     { title }
                 </Typography>
 
-                <h2 className="infoBox__cases">{ cases }</h2>
+                <h2 className={ `infoBox__stats ${props.className}` }>{ cases }</h2>
 
                 <Typography className="infoBox__total" color="textSecondary">
                     { total }

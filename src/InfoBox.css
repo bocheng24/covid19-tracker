@@ -1,17 +1,31 @@
 .info-box {
     flex: 1;
+    cursor: pointer;
 }
 
 .info-box:not(:last-child) {
     margin-right: 25px;
 }
 
-.infoBox__cases {
-    color: #cc1034;
+.infoBox__stats {
     font-size: 1.75rem;
     font-weight: 600;
     margin-bottom: 0.5rem;
 }
+
+.infoBox_cases {
+    color: #CC1034;
+}
+
+.infoBox_recovered {
+    color: #7DD71D;
+}
+
+.infoBox_deaths {
+    color: #8c7ae6
+}
+
+
 
 .infoBox__total {
     color: #6c757d;
@@ -19,3 +33,8 @@
     font-weight: 700;
     
 }
+
+.infoBox__selected {
+    border-top: 8px solid #ffa502;
+}
+

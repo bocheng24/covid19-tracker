@@ -11,7 +11,7 @@ const caseTypeColors = {
 
     recovered: {
         hex: "#7DD71D",
-        multiplier: 300
+        multiplier: 200
     },
 
     deaths: {
@@ -21,7 +21,8 @@ const caseTypeColors = {
 }
 
 function MapCircle({ country, caseType }) {
-    return (
+
+    return (     
         
             <Circle
                 center={ [country.countryInfo.lat, country.countryInfo.long] }
